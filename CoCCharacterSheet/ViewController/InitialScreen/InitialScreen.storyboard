@@ -36,7 +36,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GeJ-UZ-gE9">
-                                <rect key="frame" x="0.0" y="806" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="786" width="414" height="60"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vhY-wt-XOg">
                                         <rect key="frame" x="157" y="24.5" width="100" height="30.5"/>
@@ -65,7 +65,7 @@
                             <constraint firstAttribute="trailing" secondItem="6QV-93-M1k" secondAttribute="trailing" id="dxf-by-to4"/>
                             <constraint firstItem="6QV-93-M1k" firstAttribute="leading" secondItem="vzi-33-Vfp" secondAttribute="leading" id="elC-97-Bbk"/>
                             <constraint firstAttribute="trailing" secondItem="oOa-Lv-ANa" secondAttribute="trailing" id="kS7-mN-Fq6"/>
-                            <constraint firstAttribute="bottom" secondItem="GeJ-UZ-gE9" secondAttribute="bottom" constant="30" id="qnK-kD-ca7"/>
+                            <constraint firstAttribute="bottom" secondItem="GeJ-UZ-gE9" secondAttribute="bottom" constant="50" id="qnK-kD-ca7"/>
                             <constraint firstItem="6QV-93-M1k" firstAttribute="top" secondItem="vzi-33-Vfp" secondAttribute="top" id="wYv-0V-Zs5"/>
                             <constraint firstItem="GeJ-UZ-gE9" firstAttribute="leading" secondItem="rsR-J3-Gxe" secondAttribute="leading" id="yWH-oz-E17"/>
                         </constraints>

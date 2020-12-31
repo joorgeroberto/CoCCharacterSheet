@@ -11,15 +11,24 @@ import UIKit
 class InitialScreenViewModel {
     var downArrowImage: UIImageView!
     var initialCenter = CGFloat()
+    var translateArrow = false
     private var recognizer: UIPanGestureRecognizer!
     private var recognizerView: UIView!
     private var navigationController: UINavigationController?
-    func changeArrowImageColor(color: String) {
+    
+    func setArrowAnimation(_ color: String) {
+        let translateValue = translateArrow ? -20 : 20
+        self.translateArrow = !translateArrow
+        self.downArrowImage.center.y = self.downArrowImage.center.y - CGFloat(translateValue)
+        self.downArrowImage.tintColor = color == "white" ? .white : .black
+    }
+    
+    func setArrow(color: String) {
         UIView.animate(withDuration: 1.2) {
-            self.downArrowImage.tintColor = color == "white" ? .white : .black
+            self.setArrowAnimation(color)
         } completion: { _ in
             let changeColor = color == "white" ? "black" : "white"
-            self.changeArrowImageColor(color: changeColor)
+            self.setArrow(color: changeColor)
         }
     }
     
@@ -28,7 +37,18 @@ class InitialScreenViewModel {
         self.navigationController?.isNavigationBarHidden = true
     }
     
-    func toNextScreen() {
+    func setInitialCenter() {
+        _ = recognizer.translation(in: recognizerView)
+        initialCenter = recognizerView.center.y
+    }
+    
+    func translateView() {
+        let translation = recognizer.translation(in: recognizerView)
+        recognizerView.center.y += translation.y
+        recognizer.setTranslation(.zero, in: recognizerView)
+    }
+    
+    func navigateToNextScreen() {
         self.navigationController?.isNavigationBarHidden = true
         let characterListScreen = UIStoryboard(name: "CharacterListScreen", bundle: nil).instantiateInitialViewController() as! CharacterListScreenViewController
         self.navigationController?.pushViewController(characterListScreen, animated: false)
@@ -53,7 +73,7 @@ class InitialScreenViewModel {
             },
             completion: {_ in
                 if(viewPosition <= quarterOfScreen) {
-                    return self.toNextScreen()
+                    return self.navigateToNextScreen()
                 }
             })
         }
@@ -67,12 +87,9 @@ class InitialScreenViewModel {
         
         switch recognizer.state {
             case .began:
-                _ = recognizer.translation(in: recognizerView)
-                initialCenter = recognizerView.center.y
+                setInitialCenter()
             case .changed:
-                let translation = recognizer.translation(in: recognizerView)
-                recognizerView.center.y += translation.y
-                recognizer.setTranslation(.zero, in: recognizerView)
+                translateView()
 
             case .ended:
                 return animateContainer()

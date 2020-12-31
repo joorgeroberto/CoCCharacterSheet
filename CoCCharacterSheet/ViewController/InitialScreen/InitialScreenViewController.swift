@@ -19,7 +19,7 @@ class InitialScreenViewController: UIViewController {
     
     func setArrow() {
         viewModel.downArrowImage = downArrowImage!
-        viewModel.changeArrowImageColor(color: "white")
+        viewModel.setArrow(color: "white")
     }
     
     func setNavigation() {
