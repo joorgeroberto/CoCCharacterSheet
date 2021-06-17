@@ -3,7 +3,9 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,13 +16,59 @@
                     <view key="view" contentMode="scaleToFill" id="Ngb-MW-TVH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cocLogo" translatesAutoresizingMaskIntoConstraints="NO" id="hOc-Be-33T">
+                                <rect key="frame" x="142" y="49" width="130" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="Jmj-CU-r32"/>
+                                    <constraint firstAttribute="height" constant="130" id="KrA-Hj-zoy"/>
+                                </constraints>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5F5-hN-wXR">
+                                <rect key="frame" x="20" y="179" width="374" height="673"/>
+                                <color key="backgroundColor" name="transparent"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ffA-J4-zHb">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="QDJ-aH-TBO" customClass="CharacterCollectionViewCell" customModule="CoCCharacterSheet" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="rcV-kY-scK">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="tsB-eX-ddO"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tsB-eX-ddO" firstAttribute="trailing" secondItem="5F5-hN-wXR" secondAttribute="trailing" constant="20" id="6Uu-WH-HcA"/>
+                            <constraint firstItem="hOc-Be-33T" firstAttribute="centerX" secondItem="Ngb-MW-TVH" secondAttribute="centerX" id="HUq-D6-q1c"/>
+                            <constraint firstItem="5F5-hN-wXR" firstAttribute="top" secondItem="hOc-Be-33T" secondAttribute="bottom" id="LfI-Ch-wFa"/>
+                            <constraint firstItem="5F5-hN-wXR" firstAttribute="leading" secondItem="tsB-eX-ddO" secondAttribute="leading" constant="20" id="Ou1-Sh-7m4"/>
+                            <constraint firstItem="tsB-eX-ddO" firstAttribute="bottom" secondItem="5F5-hN-wXR" secondAttribute="bottom" constant="10" id="UVD-uz-v2o"/>
+                            <constraint firstItem="hOc-Be-33T" firstAttribute="top" secondItem="tsB-eX-ddO" secondAttribute="top" constant="5" id="ilf-6n-vu5"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="CharacterList" destination="5F5-hN-wXR" id="1SO-6A-cLs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x6u-AP-Jge" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-306" y="37"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cocLogo" width="520" height="520"/>
+        <namedColor name="transparent">
+            <color red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
